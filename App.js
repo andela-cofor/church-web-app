@@ -20,6 +20,8 @@ import {
     CallPage
 } from "./src/components";
 
+// AIzaSyA4Gqfw_CIPgI5DkEkwy8rzEWM5DBxJi-I
+
 export default MainStack = StackNavigator({
     LandingPage: { screen: LandingPage },
     MessagesPage: { screen: MessagesPage },
@@ -34,7 +36,6 @@ export default MainStack = StackNavigator({
     GivePage: { screen: GivePage },
     LocationPage: { screen: LocationPage},
     CallPage: { screen: CallPage}
-
 }, {
     navigationOptions: {
         header: null

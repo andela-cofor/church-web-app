@@ -26,51 +26,51 @@ export default class LandingPage extends React.Component {
     appNavigation = (page) => {
         const { navigate } = this.props.navigation;
         if(page === 'message') {
-            console.log(navigate('MessagesPage'));
+            navigate('MessagesPage')
         }
 
         if(page === 'events') {
-            console.log(navigate('EventsPage'));
+            navigate('EventsPage');
         }
 
         if(page === 'blog') {
-            console.log(navigate('BlogPage'));
+            navigate('BlogPage');
         }
 
         if(page === 'resource') {
-            console.log(navigate('ResourcesPage'));
+            navigate('ResourcesPage');
         }
 
         if(page === 'devotions') {
-            console.log(navigate('DevotionsPage'));
+            navigate('DevotionsPage');
         }
 
         if(page === 'confessions') {
-            console.log(navigate('ConfessionsPage'));
+            navigate('ConfessionsPage');
         }
 
         if(page === 'photos') {
-            console.log(navigate('PhotosPage'));
+            navigate('PhotosPage');
         }
 
         if(page === 'music') {
-            console.log(navigate('MusicPage'));
+            navigate('MusicPage');
         }
 
         if(page === 'share') {
-            console.log(navigate('SharePage'));
+            navigate('SharePage');
         }
 
         if(page === 'give') {
-            console.log(navigate('GivePage'));
+            navigate('GivePage');
         }
 
         if(page === 'location') {
-            console.log(navigate('LocationPage'));
+           navigate('LocationPage');
         }
 
         if(page === 'call') {
-            console.log(navigate('CallPage'));
+            navigate('CallPage');
         }
     }
 
