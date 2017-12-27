@@ -39,7 +39,7 @@ export default class MessagesPage extends Component {
 
     componentDidMount() {
         const APIKey = 'AIzaSyA4Gqfw_CIPgI5DkEkwy8rzEWM5DBxJi-I'
-        const ChannelID = 'UCbertc-gMbkkHuSmg0qwnxw'
+        const ChannelID = 'UCpCrgB9N3nF4AYELN63bbdQ'
         return fetch(`https://www.googleapis.com/youtube/v3/search?key=${APIKey}
         &channelId=${ChannelID}&part=snippet,id&order=date&maxResults=20`)
             .then((response) => response.json())
@@ -84,21 +84,19 @@ export default class MessagesPage extends Component {
                 <Header headerText="All Videos" />
                 <ScrollView>
                     <View style={container}>
-                        <ImageBackground style={{ width: undefined, height: undefined}} source={require('../../assets/purple.jpg')}>
-                            {this.state.data.map((item, i) =>
-                                <TouchableHighlight key={item.id.videoId} onPress={() => navigate('VideoPlayer', {
-                                    youtubeId: item.id.videoId
-                                })}>
-                                    <View style={button}>
-                                        <Image
-                                            source={{url: item.snippet.thumbnails.medium.url}}
-                                            style={{ height: 180, width: 320}}>
-                                        </Image>
-                                        <Text style={buttonText}>{item.snippet.title}</Text>
-                                    </View>
-                                </TouchableHighlight>
-                            )}
-                        </ImageBackground>
+                        {this.state.data.map((item, i) =>
+                            <TouchableHighlight key={item.id.videoId} onPress={() => navigate('VideoPlayer', {
+                                youtubeId: item.id.videoId
+                            })}>
+                                <View style={button}>
+                                    <Image
+                                        source={{url: item.snippet.thumbnails.medium.url}}
+                                        style={{ height: 180, width: 320}}>
+                                    </Image>
+                                    <Text style={buttonText}>{item.snippet.title}</Text>
+                                </View>
+                            </TouchableHighlight>
+                        )}
                     </View>
                 </ScrollView>
             </View>
@@ -121,13 +119,13 @@ const styles = StyleSheet.create({
     },
     button: {
         marginBottom: 30,
-        width: 260,
+        width: '50%',
         alignItems: 'center',
-        backgroundColor: '#2196F3'
+        backgroundColor: 'white'
     },
     buttonText: {
         padding: 20,
-        color: 'white'
+        color: 'black'
     }
 });
 

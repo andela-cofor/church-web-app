@@ -10,8 +10,11 @@ import {
     Image,
     TouchableOpacity
 } from 'react-native';
-import { StackNavigator } from 'react-navigation';
-import {DevotionsPage} from "./index";
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
+import  thunk  from 'redux-thunk';
+import  createLogger  from 'redux-logger'
+
 
 
 // components
@@ -78,7 +81,7 @@ export default class LandingPage extends React.Component {
         const { container, viewStyle, textStyle, leftImageStyle } =  styles;
         return (
             <ImageBackground
-                source={require('../../assets/purple.jpg')}
+                source={require('../../assets/blue-cross-on-at-a-church-backgrounds-wallpapers.jpg')}
                 style={container}>
                 <View>
                     <TouchableOpacity>
