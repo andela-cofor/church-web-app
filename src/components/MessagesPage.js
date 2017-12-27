@@ -39,7 +39,7 @@ export default class MessagesPage extends Component {
 
     componentDidMount() {
         const APIKey = 'AIzaSyA4Gqfw_CIPgI5DkEkwy8rzEWM5DBxJi-I'
-        const ChannelID = 'UCjPsrfQC2hdWV7Gx18VzNRg'
+        const ChannelID = 'UCbertc-gMbkkHuSmg0qwnxw'
         return fetch(`https://www.googleapis.com/youtube/v3/search?key=${APIKey}
         &channelId=${ChannelID}&part=snippet,id&order=date&maxResults=20`)
             .then((response) => response.json())
