@@ -17,7 +17,8 @@ import {
     SharePage,
     GivePage,
     LocationPage,
-    CallPage
+    CallPage,
+    VideoPlayer
 } from "./src/components";
 
 // AIzaSyA4Gqfw_CIPgI5DkEkwy8rzEWM5DBxJi-I
@@ -35,7 +36,8 @@ export default MainStack = StackNavigator({
     SharePage: { screen: SharePage },
     GivePage: { screen: GivePage },
     LocationPage: { screen: LocationPage},
-    CallPage: { screen: CallPage}
+    CallPage: { screen: CallPage},
+    VideoPlayer: { screen: VideoPlayer }
 }, {
     navigationOptions: {
         header: null

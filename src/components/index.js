@@ -11,3 +11,5 @@ export * from './SharePage';
 export * from './GivePage';
 export * from './LocationPage';
 export * from './CallPage';
+export * from './VideoPlayer';
+
