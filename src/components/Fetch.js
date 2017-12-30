@@ -10,12 +10,13 @@ import {
     ScrollView,
     TouchableHighlight,
     Image,
+    ImageBackground
 } from 'react-native';
 
 // component
 import Header from "./header/Header";
 
-export default class MusicPage extends Component {
+export default class Fetch extends Component {
 
     constructor(props) {
         super(props)
@@ -38,17 +39,18 @@ export default class MusicPage extends Component {
 
     componentDidMount() {
         const APIKey = 'AIzaSyA4Gqfw_CIPgI5DkEkwy8rzEWM5DBxJi-I'
-        const ChannelID = 'UCbertc-gMbkkHuSmg0qwnxw'
+        const ChannelID = this.props.navigation.state.params.channelID;
+        const numOfVideos = this.props.navigation.state.params.numOfVideos;
+
         return fetch(`https://www.googleapis.com/youtube/v3/search?key=${APIKey}
-        &channelId=${ChannelID}&part=snippet,id&order=date&maxResults=20`)
+        &channelId=${ChannelID}&part=snippet,id&order=date&maxResults=${numOfVideos}`)
             .then((response) => response.json())
             .then((responseJson) => {
                 let videoId = [];
-                console.log(responseJson)
                 responseJson.items.forEach((item) => {
                     videoId.push(item)
                 })
-                console.log(responseJson)
+                console.log(responseJson);
 
                 this.setState({
                     isLoading: false,
@@ -106,10 +108,9 @@ export default class MusicPage extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor:'black',
+        backgroundColor:'#040203',
         justifyContent: 'center',
         alignItems: 'center',
-        borderColor: 'gray'
     },
     activityIndicator: {
         flex: 1,
@@ -129,4 +130,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export { MusicPage };
+export { Fetch };

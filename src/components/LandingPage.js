@@ -29,11 +29,17 @@ export default class LandingPage extends React.Component {
     appNavigation = (page) => {
         const { navigate } = this.props.navigation;
         if(page === 'message') {
-            navigate('MessagesPage')
+            navigate('Fetch', {
+                channelID: 'UCjPsrfQC2hdWV7Gx18VzNRg',
+                numOfVideos: '20'
+            })
         }
 
         if(page === 'events') {
-            navigate('EventsPage');
+            navigate('Fetch', {
+                channelID: 'UCpCrgB9N3nF4AYELN63bbdQ',
+                numOfVideos: '20'
+            })
         }
 
         if(page === 'blog') {
@@ -48,8 +54,11 @@ export default class LandingPage extends React.Component {
             navigate('DevotionsPage');
         }
 
-        if(page === 'confessions') {
-            navigate('ConfessionsPage');
+        if(page === 'live') {
+            navigate('Fetch', {
+                channelID: 'UCpCrgB9N3nF4AYELN63bbdQ',
+                numOfVideos: '1'
+            })
         }
 
         if(page === 'photos') {
@@ -57,7 +66,10 @@ export default class LandingPage extends React.Component {
         }
 
         if(page === 'music') {
-            navigate('MusicPage');
+            navigate('Fetch', {
+                channelID: 'UCbertc-gMbkkHuSmg0qwnxw',
+                numOfVideos: '20'
+            })
         }
 
         if(page === 'share') {
@@ -81,7 +93,7 @@ export default class LandingPage extends React.Component {
         const { container, viewStyle, textStyle, leftImageStyle } =  styles;
         return (
             <ImageBackground
-                source={require('../../assets/blue-cross-on-at-a-church-backgrounds-wallpapers.jpg')}
+                source={require('../../assets/lion-3040797_1280.jpg')}
                 style={container}>
                 <View>
                     <TouchableOpacity>
@@ -123,9 +135,9 @@ export default class LandingPage extends React.Component {
                         </TouchableOpacity>
                     </View>
                     <View>
-                        <TouchableOpacity onPress={() =>  this.appNavigation('confessions')}>
-                            <Image style={{ marginLeft: 65 }} source={require('../../assets/confessions.png')} />
-                            <Text style={{ marginLeft: 50, color: 'white' }}>Confession</Text>
+                        <TouchableOpacity onPress={() =>  this.appNavigation('live')}>
+                            <Image style={{ marginLeft: 50 }} source={require('../../assets/confessions.png')} />
+                            <Text style={{ marginLeft: 55, color: 'white' }}>Live</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -182,6 +194,7 @@ const styles = StyleSheet.create({
         backgroundColor:'transparent',
         justifyContent: 'space-around',
         alignItems: 'center',
+        opacity: 0.8
     },
     viewStyle: {
         flexDirection: 'row',
