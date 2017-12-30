@@ -10,16 +10,23 @@ import {
     Image,
     TouchableOpacity
 } from 'react-native';
-import { Provider } from 'react-redux';
-import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
-import  thunk  from 'redux-thunk';
-import  createLogger  from 'redux-logger'
+import Modal from 'react-native-simple-modal';
 
 
 
 // components
 
 export default class LandingPage extends React.Component {
+
+    state = { showModal: false, modalHeadText: '', ModalBodyText: '' };
+
+    /**
+     *
+     *
+     */
+    setModaltext = () => {
+        this.setState({ modaHeadText: 'Address' })
+    }
 
     /**
      * appNavigation
@@ -90,11 +97,42 @@ export default class LandingPage extends React.Component {
     }
 
     render() {
-        const { container, viewStyle, textStyle, leftImageStyle } =  styles;
+        const {
+            container,
+            viewStyle,
+            textStyle,
+            leftImageStyle,
+            modalStyle,
+            confirmationTextStyle,
+            modalBottomViewContainer,
+            modalBodyText
+        } =  styles;
         return (
             <ImageBackground
                 source={require('../../assets/lion-3040797_1280.jpg')}
                 style={container}>
+                <Modal
+                    offset={this.state.offset}
+                    open={this.state.showModal}
+                    modalDidClose={() => this.setState({ showModal: false })}
+                    style={modalStyle}
+                >
+                    <View style={{ height: 168 }}>
+                        <Text
+                            style={confirmationTextStyle}
+                        >
+                            { this.state.modalHeadText }
+                        </Text>
+                        <View style={modalBottomViewContainer} >
+                            <Text
+                                style={modalBodyText}
+                                onPress={() => console.log(this.state.password)}
+                            >
+                                { this.state.ModalBodyText }
+                            </Text>
+                        </View>
+                    </View>
+                </Modal>
                 <View>
                     <TouchableOpacity>
                         <Image source={require('../../assets/ic_event_white_24dp_2x.png')}/>
@@ -124,7 +162,7 @@ export default class LandingPage extends React.Component {
                 <View style={viewStyle}>
                     <View>
                         <TouchableOpacity onPress={() =>  this.appNavigation('message')}>
-                            <Image style={{ marginRight: 30 }} source={require('../../assets/bible.png')} />
+                            <Image style={{ marginRight: 30, zIndex: -1 }} source={require('../../assets/bible.png')} />
                             <Text style={{  color: 'white' }}>Messages</Text>
                         </TouchableOpacity>
                     </View>
@@ -169,13 +207,27 @@ export default class LandingPage extends React.Component {
                         </TouchableOpacity>
                     </View>
                     <View>
-                        <TouchableOpacity onPress={() =>  this.appNavigation('location')}>
+                        <TouchableOpacity
+                            onPress={() =>
+                                this.setState({
+                                    showModal: true,
+                                    modalHeadText: 'Address',
+                                    ModalBodyText: 'No 32 osho-drive at 1st benue bus stop, Olodi Apapa lagos Nigeria'
+                                })}
+                        >
                             <Image source={require('../../assets/location.png')} />
                             <Text style={{ color: 'white' }}>Location</Text>
                         </TouchableOpacity>
                     </View>
                     <View>
-                        <TouchableOpacity onPress={() =>  this.appNavigation('call')}>
+                        <TouchableOpacity
+                            onPress={() =>
+                                this.setState({
+                                    showModal: true,
+                                    modalHeadText: 'Phone Number:',
+                                    ModalBodyText: '+2347030296746'
+                                })}
+                        >
                             <Image style={{ marginLeft: 70 }} source={require('../../assets/call.png')} />
                             <Text style={{ marginLeft: 75, color: 'white' }}>Call</Text>
                         </TouchableOpacity>
@@ -207,6 +259,27 @@ const styles = StyleSheet.create({
     textStyle: {
         textAlign: 'center',
         color: 'white'
+    },
+    modalStyle: {
+        alignItems: 'center',
+    },
+    confirmationTextStyle: {
+        fontSize: 20,
+        marginTop: 10,
+        paddingLeft: 15,
+        color: '#616161',
+        fontWeight: '700'
+    },
+    modalBottomViewContainer: {
+        flexDirection: 'row',
+        marginTop: 10,
+    },
+    modalBodyText: {
+        paddingTop: 10,
+        paddingLeft: 15,
+        textAlign: 'center',
+        fontFamily: 'AvenirNextCondensed-Medium',
+        color: '#4a4a4a',
     }
 });
 

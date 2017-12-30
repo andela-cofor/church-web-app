@@ -5,7 +5,5 @@ export * from './DevotionsPage';
 export * from './PhotosPage';
 export * from './SharePage';
 export * from './GivePage';
-export * from './LocationPage';
-export * from './CallPage';
 export * from './VideoPlayer';
 export * from './Fetch';

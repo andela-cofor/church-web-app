@@ -12,7 +12,6 @@ import {
     PhotosPage,
     SharePage,
     GivePage,
-    LocationPage,
     CallPage,
     VideoPlayer,
     Fetch,
@@ -28,8 +27,6 @@ export default MainStack = StackNavigator({
     PhotosPage: { screen: PhotosPage },
     SharePage: { screen: SharePage },
     GivePage: { screen: GivePage },
-    LocationPage: { screen: LocationPage},
-    CallPage: { screen: CallPage},
     VideoPlayer: { screen: VideoPlayer },
     Fetch: { screen: Fetch }
 }, {

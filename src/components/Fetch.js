@@ -10,7 +10,6 @@ import {
     ScrollView,
     TouchableHighlight,
     Image,
-    ImageBackground
 } from 'react-native';
 
 // component
