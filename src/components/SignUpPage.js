@@ -41,12 +41,26 @@ export default class SignUpPage extends Component {
                 console.log(success, 'successfull')
                 this.setState({ error: '', loading: false });
                 navigate('MoovHomepage');
+                this.sendVerificationMail()
 
             })
             .catch((error) => {
                 console.log(error)
                 this.onLoginFail(error.message)
             });
+    }
+
+
+    sendVerificationMail = () => {
+        var user = firebase.auth().currentUser;
+
+        user.sendEmailVerification().then(function() {
+            // Email sent.
+            console.log('email sent')
+        }).catch((error) => {
+            // An error happened.
+            console.log(error, 'not sent')
+        });
     }
 
     onLoginFail = (erroMessage) => {
@@ -78,8 +92,8 @@ export default class SignUpPage extends Component {
         return (
             <View style={container}>
                 <Image
-                    source={require('../../assets/AppLogo2.png')}
-                    style={{ height: '30%', width: '80%', marginTop: 100}}
+                    source={require('../../assets/AppLogo.png')}
+                    style={{ height: '20%', width: '80%', marginTop: 150, marginBottom: 100 }}
                 />
                 <View>
                     <View style={inputContainerStyle}>

@@ -11,15 +11,32 @@ import {
     ImageBackground
 } from 'react-native';
 
+import * as firebase from "firebase";
 
 export default class MoovHomepage extends Component {
 
+
+    signOut = () => {
+        firebase.auth().signOut()
+            .then((response) => {
+                // Sign-out successful.
+                console.log(response)
+            })
+            .catch((error) => {
+                // An error happened.
+                console.log(error)
+            });
+
+        const { navigate } = this.props.navigation;
+
+        navigate('LoginPage');
+    }
 
     render() {
         const { container, viewStyle, textStyle, leftImageStyle } =  styles;
         return (
             <View style={container}>
-                <Text>Welcome to Moove App</Text>
+                <Text onPress={() => this.signOut()}>Welcome to Moove App</Text>
             </View>
         )
     }

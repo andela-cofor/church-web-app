@@ -25,6 +25,7 @@ import {
 
 export default MainStack = StackNavigator({
     LoginPage: { screen: LoginPage },
+    SignInPage: { screen: SignInPage },
     LandingPage: { screen: LandingPage },
     BlogPage: { screen: BlogPage },
     ResourcesPage: { screen: ResourcesPage },
@@ -34,7 +35,6 @@ export default MainStack = StackNavigator({
     GivePage: { screen: GivePage },
     VideoPlayer: { screen: VideoPlayer },
     Fetch: { screen: Fetch },
-    SignInPage: { screen: SignInPage },
     SignUpPage: {screen: SignUpPage },
     MoovHomepage: { screen: MoovHomepage },
 

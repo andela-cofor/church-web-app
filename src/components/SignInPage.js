@@ -30,23 +30,42 @@ export default class SignInPage extends Component {
         };
     }
 
-    signInWIthGoogleAccount() {
+
+    signInWIthGoogleAccount = () => {
         const { navigate } = this.props.navigation;
 
         this.setState({ error: '', loading: true });
-
-        console.log(this.state, 'what entered');
-
+        // No user is signed in.
         firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
             .then((response) => {
                 console.log(response)
                 this.setState({ error: '', loading: false });
-                navigate('MoovHomepage');
+                // navigate('MoovHomepage');
             })
             .catch((error) => {
                 console.log(error)
                 this.onLoginFail(error.message)
             });
+    }
+
+    resetUserPassword = () => {
+        this.setState({ error: '', loading: true });
+
+        var auth = firebase.auth();
+        var emailAddress = this.state.email;
+
+        auth.sendPasswordResetEmail(emailAddress).then(() => {
+            // Email sent.
+            console.log('verification sent');
+            this.setState({ error: 'Reset link has been sent to your email', loading: false });
+
+        }).catch((error) => {
+            // An error happened.
+            console.log(error)
+            console.log(error.message, 'verification failed')
+            this.setState({ error: error.message, loading: false });
+
+        });
     }
 
     onLoginFail = (erroMessage) => {
@@ -78,8 +97,8 @@ export default class SignInPage extends Component {
         return (
             <View style={container}>
                 <Image
-                    source={require('../../assets/AppLogo2.png')}
-                    style={{ height: '30%', width: '80%', marginTop: 100}}
+                    source={require('../../assets/AppLogo.png')}
+                    style={{ height: '20%', width: '80%', marginTop: 150, marginBottom: 100 }}
                 />
                 <View>
                     <View style={inputContainerStyle}>
@@ -110,6 +129,7 @@ export default class SignInPage extends Component {
                 }}>
                     <View style={{ justifyContent: 'center' }}>
                         <Button onPress={() =>  this.signInWIthGoogleAccount()} text='Log In'/>
+                        <Text onPress={() => this.resetUserPassword()} style={{ paddingTop: 6, justifyContent: 'center', fontSize: 13 }}>Forgot Password</Text>
                     </View>
                 </View>
             </View>

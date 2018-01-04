@@ -103,7 +103,7 @@ export default class FormPage extends Component {
         return (
             <View style={container}>
                 <Image
-                    source={require('../../assets/AppLogo2.png')}
+                    source={require('../../assets/AppLogo.png')}
                     style={{ height: '40%', width: '80%', marginTop: 100}}
                 />
                 <View>

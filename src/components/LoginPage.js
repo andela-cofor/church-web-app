@@ -29,15 +29,19 @@ export default class LoginPage extends Component {
         };
     }
 
-    componentWillMount() {
-        firebase.initializeApp({
-            apiKey: "AIzaSyDgCnqFB-GhhhQpeNpeVNzv3hI4qH_0aO0",
-            authDomain: "jcm-chrch-app.firebaseapp.com",
-            databaseURL: "https://jcm-chrch-app.firebaseio.com",
-            projectId: "jcm-chrch-app",
-            storageBucket: "jcm-chrch-app.appspot.com",
-            messagingSenderId: "586498142771"
-        });
+    componentDidMount() {
+
+        if(!firebase.apps.length) {
+            firebase.initializeApp({
+                apiKey: "AIzaSyDgCnqFB-GhhhQpeNpeVNzv3hI4qH_0aO0",
+                authDomain: "jcm-chrch-app.firebaseapp.com",
+                databaseURL: "https://jcm-chrch-app.firebaseio.com",
+                projectId: "jcm-chrch-app",
+                storageBucket: "jcm-chrch-app.appspot.com",
+                messagingSenderId: "586498142771"
+            });
+
+        }
     }
 
     onLoginFail = (erroMessage) => {
@@ -50,16 +54,40 @@ export default class LoginPage extends Component {
     }
 
     appNavigation = (page) => {
-        console.log('called')
+        this.setState({ loading: true });
 
         if (page === 'signup') {
             const { navigate } = this.props.navigation;
-            navigate('SignUpPage');
+
+            firebase.auth().onAuthStateChanged((user) => {
+                if (user) {
+                    console.log('logged in')
+                    this.setState({ loading: false });
+                    // User is signed in.
+                    navigate('MoovHomepage');
+                } else {
+                    this.setState({ loading: false });
+                    console.log('not logged in')
+                    navigate('SignUpPage');
+                }
+            });
         }
 
         if (page === 'login') {
             const { navigate } = this.props.navigation;
-            navigate('SignInPage');
+
+            firebase.auth().onAuthStateChanged((user) => {
+                if (user) {
+                    console.log('logged in')
+                    this.setState({ loading: false });
+                    // User is signed in.
+                    navigate('MoovHomepage');
+                } else {
+                    this.setState({ loading: false });
+                    console.log('not logged in')
+                    navigate('SignInPage');
+                }
+            });
         }
     }
 
@@ -84,7 +112,7 @@ export default class LoginPage extends Component {
         return (
             <View style={container}>
                 <Image
-                    source={require('../../assets/AppLogo2.png')}
+                    source={require('../../assets/AppLogo.png')}
                     style={{ height: '50%', width: '80%', marginTop: 150}}
                 />
                 <View style={{
