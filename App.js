@@ -15,11 +15,16 @@ import {
     CallPage,
     VideoPlayer,
     Fetch,
+    LoginPage,
+    SignInPage,
+    SignUpPage,
+    MoovHomepage
 } from "./src/components";
 
 // AIzaSyA4Gqfw_CIPgI5DkEkwy8rzEWM5DBxJi-I
 
 export default MainStack = StackNavigator({
+    LoginPage: { screen: LoginPage },
     LandingPage: { screen: LandingPage },
     BlogPage: { screen: BlogPage },
     ResourcesPage: { screen: ResourcesPage },
@@ -28,7 +33,11 @@ export default MainStack = StackNavigator({
     SharePage: { screen: SharePage },
     GivePage: { screen: GivePage },
     VideoPlayer: { screen: VideoPlayer },
-    Fetch: { screen: Fetch }
+    Fetch: { screen: Fetch },
+    SignInPage: { screen: SignInPage },
+    SignUpPage: {screen: SignUpPage },
+    MoovHomepage: { screen: MoovHomepage },
+
 }, {
     navigationOptions: {
         header: null

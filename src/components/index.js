@@ -7,3 +7,7 @@ export * from './SharePage';
 export * from './GivePage';
 export * from './VideoPlayer';
 export * from './Fetch';
+export * from './LoginPage';
+export * from './SignInPage';
+export * from './SignUpPage';
+export * from './MoovHomepage';
