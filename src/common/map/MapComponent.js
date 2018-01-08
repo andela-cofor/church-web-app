@@ -5,7 +5,8 @@ import React, { Component } from 'react';
 import {
     StyleSheet,
     View,
-    Text
+    Text,
+    Image
 } from 'react-native';
 import MapViewDirections from 'react-native-maps-directions';
 
@@ -15,12 +16,14 @@ const GOOGLE_MAPS_APIKEY = 'AIzaSyDAmhVVwfEHfpAuLLRiDJYu58sspa36KGg';
 import MapView from 'react-native-maps';
 
 const MapComponent = ({ longitude, latitude }) => {
-    const { container } =  styles;
+    const { container , cabIcon} =  styles;
     let cords = { latitude, longitude}
 
     const origin = {latitude: latitude, longitude: longitude};
-    const destination = {};
-    // const destination = {latitude: 37.771707, longitude: -122.4053769};
+
+    const destination = {latitude: 37.771707, longitude: -122.4053769};
+
+    cords2 = { latitude: destination.latitude, longitude: destination.longitude}
 
     return (
         <View style={container}>
@@ -34,9 +37,23 @@ const MapComponent = ({ longitude, latitude }) => {
             >
                 <MapView.Marker
                     coordinate={cords}
-                    title="My Marker"
+                    title="My Loaction"
                     description="Some description"
                 />
+                <MapView.Marker
+                    coordinate={cords2}
+                    title="My Destination"
+                    description="Some description"
+                />
+                <MapView.Marker
+                    anchor={{ x: 0.5, y: 0.5 }}
+                    coordinate={cords}
+                    title='Mr A Car'
+                >
+                    <View>
+                        <Image style={cabIcon} source={require('../../../assets/car.png')}/>
+                    </View>
+                </MapView.Marker>
                 {
                     (destination.longitude)
                     ? <MapViewDirections
@@ -151,6 +168,11 @@ const styles = StyleSheet.create({
         // justifyContent: 'space-around',
         // alignItems: 'center',
     },
+    cabIcon: {
+        height: 40,
+        width: 40,
+
+    }
 });
 
 export { MapComponent };

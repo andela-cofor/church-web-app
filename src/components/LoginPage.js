@@ -78,18 +78,20 @@ export default class LoginPage extends Component {
         if (page === 'login') {
             const { navigate } = this.props.navigation;
 
-            firebase.auth().onAuthStateChanged((user) => {
-                if (user) {
-                    console.log('logged in')
-                    this.setState({ loading: false });
-                    // User is signed in.
-                    navigate('MoovHomepage');
-                } else {
-                    this.setState({ loading: false });
-                    console.log('not logged in')
-                    navigate('SignInPage');
-                }
-            });
+            navigate('MoovHomepage');
+
+            // firebase.auth().onAuthStateChanged((user) => {
+            //     if (user) {
+            //         console.log('logged in')
+            //         this.setState({ loading: false });
+            //         // User is signed in.
+            //         navigate('MoovHomepage');
+            //     } else {
+            //         this.setState({ loading: false });
+            //         console.log('not logged in')
+            //         navigate('SignInPage');
+            //     }
+            // });
         }
     }
 

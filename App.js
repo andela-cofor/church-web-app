@@ -24,7 +24,6 @@ import {
 // AIzaSyA4Gqfw_CIPgI5DkEkwy8rzEWM5DBxJi-I
 
 export default MainStack = StackNavigator({
-    MoovHomepage: { screen: MoovHomepage },
     LoginPage: { screen: LoginPage },
     SignInPage: { screen: SignInPage },
     LandingPage: { screen: LandingPage },
@@ -37,6 +36,7 @@ export default MainStack = StackNavigator({
     VideoPlayer: { screen: VideoPlayer },
     Fetch: { screen: Fetch },
     SignUpPage: {screen: SignUpPage },
+    MoovHomepage: { screen: MoovHomepage },
 
 }, {
     navigationOptions: {
